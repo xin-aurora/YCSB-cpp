@@ -67,11 +67,17 @@ DB::Status BasicDB::Update(const std::string &table, const std::string &key,
 DB::Status BasicDB::Insert(const std::string &table, const std::string &key,
                            std::vector<Field> &values) {
   std::lock_guard<std::mutex> lock(mutex_);
-  cout << "INSERT " << table << ' ' << key << " [ ";
+//  cout << "INSERT " << table << ' ' << key << " [ ";
+//  for (auto v : values) {
+//    cout << v.name << '=' << v.value << ' ';
+
+//  }
+//  cout << ']' << endl;
+  cout << "INSERT " << table << ' ' << key << ", key size = " << key.size() << endl;
   for (auto v : values) {
-    cout << v.name << '=' << v.value << ' ';
+	  cout << ", value size = " << v.value.size() << endl;
   }
-  cout << ']' << endl;
+  cout << "number of fields in values = " << values.size() << endl;
   return kOK;
 }
 
